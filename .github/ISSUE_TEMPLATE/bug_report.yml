@@ -1,0 +1,37 @@
+name: Bug Report
+description: Create a report to help us fix a bug or unexpected behavior
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report an issue! Please check existing issues first.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear and concise description of the bug.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal Reproduction Steps
+      description: Provide minimal steps or Rust code to reproduce the behavior.
+      placeholder: |
+        1. Setup struct with #[derive(StitchRecord)]
+        2. Encode using ...
+        3. Fails with ...
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment Info
+      description: rustc version, target architecture, OS.
+      value: |
+        - rustc: (e.g. rustc 1.84.0)
+        - Target: (e.g. x86_64-unknown-linux-gnu / thumbv7em-none-eabihf)
+        - Profile: (debug / release)
+    validations:
+      required: true
