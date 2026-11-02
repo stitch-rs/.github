@@ -42,16 +42,16 @@ zero runtime cost.
 
 | Repository | Status | Description | Primary Role |
 | :--- | :---: | :--- | :--- |
-| [**`stitch`**](https://github.com/stitch-rs/stitch) | ![Active](https://img.shields.io/badge/status-active-brightgreen) | Canonical Sewing Machine Architecture (SMA) engine, sealed monomorphic execution chains, U-cycle traversal, and CQS capabilities. | Monomorphic Execution Kernel |
+| [**`stitch`**](https://github.com/stitch-rs/stitch) | ![Active](https://img.shields.io/badge/status-active-brightgreen) | Official facade meta-crate (`use stitch::prelude::*;`), unified entry point, and ecosystem prelude. | Unified Facade & Meta-Crate |
+| [**`stitch-framework`**](https://github.com/stitch-rs/stitch-framework) | ![Active](https://img.shields.io/badge/status-active-brightgreen) | Canonical Sewing Machine Architecture (SMA) engine, sealed monomorphic execution chains, U-cycle traversal, macros, and CLI. | Monomorphic Execution Kernel |
 | [**`stitch-data`**](https://github.com/stitch-rs/stitch-data) | ![Active](https://img.shields.io/badge/status-active-brightgreen) | High-density data layout & transformation engine: AoS/SoA columnar blocks, SIMD Delta/RLE/BitStream codecs, feature masks, and derive macros. | Data & Transformation Engine |
 | [**`stitch-wire`**](https://github.com/stitch-rs/stitch-wire) | ![Planned](https://img.shields.io/badge/status-planned-blue) | Microsecond wire framing, streaming resync parser, hardware Castagnoli CRC32, and UDP/TCP/IPC transport bus. | Framing & Transport Bus |
-| [**`stitch-tune`**](https://github.com/stitch-rs/stitch-tune) | ![Planned](https://img.shields.io/badge/status-planned-blue) | Automated dataset profiler, layout optimizer, and code generator for empirical serialization tuning. | Developer Tooling & CLI |
 
 ---
 
 ## Quickstart: The Stitch Paradigm
 
-### 1. Monomorphic Execution Pipeline (`stitch`)
+### 1. Monomorphic Execution Pipeline (`stitch-framework`)
 
 ```rust
 use stitch::prelude::*;
@@ -66,7 +66,7 @@ let outcome = pipeline.dispatch(&mut blackboard, payload)?;
 ### 2. High-Density Schema & Layouts (`stitch-data`)
 
 ```rust
-use stitch_data::prelude::*;
+use stitch::data::prelude::*;
 
 #[derive(StitchRecord)]
 pub struct SensorReading {
