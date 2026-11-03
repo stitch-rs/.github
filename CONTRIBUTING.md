@@ -92,7 +92,27 @@ Contributors must respect our core systems engineering tenets:
 
 ---
 
-## 5. Pre-PR Local Verification Checklist
+## 5. Automated Git Hooks & Pre-PR Local Verification
+
+To completely eliminate CI build failures caused by formatting or Clippy warnings, we provide
+native, zero-dependency Git pre-commit hooks located in `.githooks/`.
+
+### 5.1 Setting Up Git Hooks
+
+Run the setup helper once to configure Git:
+
+```bash
+# Enable repository-level hooks
+git config core.hooksPath .githooks
+chmod +x .githooks/*
+```
+
+Or execute `./scripts/setup-hooks.sh` if provided in the repository.
+
+Once configured, Git will automatically run `cargo fmt --all`, re-stage modified files,
+and run `cargo clippy` before allowing any commit to proceed.
+
+### 5.2 Manual Quality Checklist
 
 Before pushing commits and submitting a Pull Request, ensure that all local
 quality gates pass with zero warnings:
